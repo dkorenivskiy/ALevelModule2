@@ -42,11 +42,5 @@ namespace lesson01
         {
             return _log.ToString();
         }
-
-        public void SaveLog()
-        {
-            File.WriteAllText("log.txt", GetLog());
-        }
-
     }
 }

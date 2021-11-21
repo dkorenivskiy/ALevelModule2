@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace lesson01
     {
         private Logger _logger = Logger.Instance();
 
+        public void SaveLog()
+        {
+            File.WriteAllText("log.txt", _logger.GetLog());
+        }
+
         public void Run()
         {
             var action = new Action();
@@ -17,7 +23,7 @@ namespace lesson01
             var random = new Random(3);
             for (int i = 0; i < 100; i++)
             {
-                var x = random.Next(1, 3);
+                var x = random.Next(1, 4);
                 Result result;
                 switch (x)
                 {
@@ -27,6 +33,7 @@ namespace lesson01
                     case 2:
                         result = action.WarningMethod();
                         break;
+                    case 3:
                     default:
                         result = action.ErrorMethod();
                         break;
