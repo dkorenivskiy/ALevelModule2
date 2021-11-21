@@ -9,7 +9,7 @@ namespace lesson01
             Starter starter = new Starter();
             starter.Run();
 
-            Logger.Instance().SaveLog();
+            starter.SaveLog();
         }
     }
 }
