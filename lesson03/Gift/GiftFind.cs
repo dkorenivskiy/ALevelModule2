@@ -28,8 +28,6 @@ namespace lesson03
                 return;
             }
 
-            im
-
             for (int i = 0; i < gift.Candies.Length; i++)
             {
                 if (gift.Candies[i].Name == name)
