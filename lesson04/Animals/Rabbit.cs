@@ -19,16 +19,16 @@ namespace lesson04
 
         public Rabbit()
         {
-            _name = "Rabbit";
+            Name = "Rabbit";
             var random = new Random();
-            _weight = random.Next(6, 10);
+            Weight = random.Next(6, 10);
             _earLength = random.Next(3, 9);
             AddiotionalName = "Ear lenght";
         }
 
         public override void PrintAnimal()
         {
-            Console.WriteLine("{0, 10} {1, 10} {2, 10} kg {3, 10}cm ({4, 10})", _name, _gender, _weight, _earLength, AddiotionalName);
+            Console.WriteLine("{0, 10} {1, 10} {2, 10} kg {3, 10}cm ({4, 10})", Name, Gender, Weight, _earLength, AddiotionalName);
         }
     }
 }

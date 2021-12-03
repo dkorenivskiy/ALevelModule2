@@ -8,38 +8,45 @@ namespace lesson04
 {
     class SectionUI
     {
+        private IAnimalRepository _animalRepository;
+        private ISection _section;
+
+        public SectionUI(IAnimalRepository animalRepository, ISection section)
+        {
+            _animalRepository = animalRepository;
+            _section = section;
+        }
+
         public void Run()
         {
             string choice;
-            Animal[] animals = new Animal[10];
+            
             Random random = new Random();
             int animalChoice;
 
-            for (int i = 0; i < animals.Length; i++)
+            for (int i = 0; i < 10; i++)
             {
                 animalChoice = random.Next(1, 4);
 
                 switch (animalChoice)
                 {
                     case 1:
-                        animals[i] = new Rabbit();
+                        _animalRepository.AddAnimal(new Rabbit());
                         break;
 
                     case 2:
-                        animals[i] = new Elephant();
+                        _animalRepository.AddAnimal(new Elephant());
                         break;
 
                     default:
-                        animals[i] = new Animal();
+                        _animalRepository.AddAnimal(new Animal());
                         break;
                 }
             }
 
-            ISection section = new Section(animals);
-
             do
             {
-                section.PrintAnimals();
+                _section.PrintAnimals();
 
                 Console.WriteLine("1 - Sort animals by name");
                 Console.WriteLine("2 - Sort animals by weight");
@@ -50,14 +57,14 @@ namespace lesson04
                 switch (choice)
                 {
                     case "1":
-                        section.SortAnimalsByName();
+                        _animalRepository.SortAnimalsByName();
                         Console.WriteLine("\nType any key to continue");
                         Console.ReadKey();
                         Console.Clear();
                         break;
 
                     case "2":
-                        section.SortAnimalsByWeight();
+                        _animalRepository.SortAnimalsByWeight();
                         Console.WriteLine("\nType any key to continue");
                         Console.ReadKey();
                         Console.Clear();
@@ -67,7 +74,7 @@ namespace lesson04
                         Console.WriteLine("Write the name");
                         string name = Console.ReadLine();
 
-                        SectionFind.FindAnimal((Section)section, name);
+                        _animalRepository.FindAnimalByName(name);
 
                         Console.WriteLine("\nType any key to continue");
                         Console.ReadKey();

@@ -9,7 +9,5 @@ namespace lesson04
     interface ISection
     {
         public void PrintAnimals();
-        public void SortAnimalsByName();
-        public void SortAnimalsByWeight();
     }
 }

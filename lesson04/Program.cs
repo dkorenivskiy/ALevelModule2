@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace lesson04
 {
@@ -6,8 +7,14 @@ namespace lesson04
     {
         static void Main(string[] args)
         {
-            SectionUI uI = new SectionUI();
-            uI.Run();
+            var serviceProvider = new ServiceCollection()
+                .AddScoped<IAnimalRepository, AnimalRepository>()
+                .AddScoped<ISection, Section>()
+                .AddScoped<SectionUI>()
+                .BuildServiceProvider();
+
+            serviceProvider.GetRequiredService<SectionUI>()
+                .Run();
         }
     }
 }

@@ -8,18 +8,11 @@ namespace lesson04
 {
     class Section : ISection
     {
-        private Animal[] _animals;
-        public Animal[] Animals
-        {
-            get
-            {
-                return _animals;
-            }
-        }
+        private List<IAnimal> _animals;
 
-        public Section(Animal[] animals) 
+        public Section(IAnimalRepository animalRepository) 
         {
-            _animals = animals;
+            _animals = animalRepository.GetAnimals();
         }
 
         public void PrintAnimals()
@@ -28,27 +21,6 @@ namespace lesson04
             foreach (var animal in _animals)
             {
                 animal.PrintAnimal();
-            }
-        }
-
-        public void SortAnimalsByName()
-        {
-            Array.Sort<Animal>(_animals);
-        }
-
-        public void SortAnimalsByWeight()
-        {
-            for (int i = 0; i < _animals.Length - 1; i++)
-            {
-                for (int j = i + 1; j < _animals.Length; j++)
-                {
-                    if (_animals[i].Weight < _animals[j].Weight)
-                    {
-                        Animal buffer = _animals[i];
-                        _animals[i] = _animals[j];
-                        _animals[j] = buffer;
-                    }
-                }
             }
         }
     }

@@ -19,16 +19,16 @@ namespace lesson04
 
         public Elephant()
         {
-            _name = "Elephant";
+            Name = "Elephant";
             var random = new Random();
-            _weight = random.Next(4000, 4500);
+            Weight = random.Next(4000, 4500);
             _trunkLength = random.Next(125, 160);
             AddiotionalName = "Trunk Length";
         }
 
         public override void PrintAnimal()
         {
-            Console.WriteLine("{0, 10} {1, 10} {2, 10} kg {3, 10}cm ({4, 10})", _name, _gender, _weight, _trunkLength, AddiotionalName);
+            Console.WriteLine("{0, 10} {1, 10} {2, 10} kg {3, 10}cm ({4, 10})", Name, Gender, Weight, _trunkLength, AddiotionalName);
         }
     }
 }
