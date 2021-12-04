@@ -8,9 +8,14 @@ using System.Threading.Tasks;
 
 namespace lesson05
 {
-    class FileService
+    class FileService : IFileService
     {
-        private Logger _logger = Logger.Instance();
+        private ILogger _logger;
+
+        public FileService(ILogger logger)
+        {
+            _logger = logger;
+        }
 
         public void SaveLog()
         {

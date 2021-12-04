@@ -14,20 +14,8 @@ namespace lesson05
         Warning
     }
 
-    class Logger
+    class Logger : ILogger
     {
-        private static Logger instance;
-
-        private Logger()
-        { }
-
-        public static Logger Instance()
-        {
-            if (instance == null)
-                instance = new Logger();
-            return instance;
-        }
-
         private StringBuilder _log = new StringBuilder();
 
         public void Log(LoggerTypes type, string message)

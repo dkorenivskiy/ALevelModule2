@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace lesson05
 {
@@ -6,8 +7,14 @@ namespace lesson05
     {
         static void Main(string[] args)
         {
-            Starter starter = new Starter();
-            starter.Run();
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<ILogger, Logger>()
+                .AddScoped<IFileService, FileService>()
+                .AddScoped<Starter>()
+                .BuildServiceProvider();
+
+            serviceProvider.GetRequiredService<Starter>()
+                .Run();
         }
     }
 }

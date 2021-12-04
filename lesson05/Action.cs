@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace lesson05
 {
-    class Action : Exception
+    class Action : IAction
     {
-        private Logger logger = Logger.Instance();
+        private ILogger _logger;
 
+        public Action(ILogger logger)
+        {
+            _logger = logger;
+        }
 
         public bool InfoMethod()
         {
-            logger.Log(LoggerTypes.Info, "Start method: InfoMethod\n");
+            _logger.Log(LoggerTypes.Info, "Start method: InfoMethod\n");
 
             return true;
         }

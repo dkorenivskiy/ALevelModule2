@@ -9,12 +9,18 @@ namespace lesson05
 {
     class Starter
     {
-        private Logger _logger = Logger.Instance();
-        private FileService _fileService = new FileService();
+        private ILogger _logger;
+        private IFileService _fileService;
+
+        public Starter(ILogger logger, IFileService fileService)
+        {
+            _logger = logger;
+            _fileService = fileService;
+        }
 
         public void Run()
         {
-            var action = new Action();
+            var action = new Action(_logger);
 
             var random = new Random(3);
             for (int i = 0; i < 100; i++)
